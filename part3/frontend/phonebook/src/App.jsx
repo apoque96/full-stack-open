@@ -90,9 +90,9 @@ const App = () => {
     if (window.confirm(`Delete ${person.name}?`)) {
       personsService
         .remove(person.id)
-        .then((res) => {
-          setPersons(persons.filter((person) => person.id !== res.id));
-          setNotificationMessage(`Deleted ${res.name}`);
+        .then(() => {
+          setPersons(persons.filter((per) => per.id !== person.id));
+          setNotificationMessage(`Deleted ${person.name}`);
           setIsSuccessfull(true);
           setTimeout(() => setNotificationMessage(null), 5000);
         })

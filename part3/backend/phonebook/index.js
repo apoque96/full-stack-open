@@ -7,6 +7,7 @@ morgan.token("content", (req, res) => JSON.stringify(req.body));
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(morgan(":content"));
+app.use(express.static("dist"));
 
 let persons = [
   {
