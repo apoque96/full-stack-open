@@ -63,11 +63,9 @@ const App = () => {
             setIsSuccessfull(true);
             setTimeout(() => setNotificationMessage(null), 5000);
           })
-          .catch(() => {
+          .catch((err) => {
             setPersons(persons.filter((per) => per.id !== person.id));
-            setNotificationMessage(
-              `${person.name} was already deleted from the server`
-            );
+            setNotificationMessage(`Error: ${err.response.data.error}`);
             setIsSuccessfull(false);
             setTimeout(() => setNotificationMessage(null), 5000);
           });
@@ -75,15 +73,22 @@ const App = () => {
       return;
     }
 
-    personsService.create(newPerson).then((createdPerson) => {
-      setPersons([...persons, createdPerson]);
-      setNewName("");
-      setNumber("");
+    personsService
+      .create(newPerson)
+      .then((createdPerson) => {
+        setPersons([...persons, createdPerson]);
+        setNewName("");
+        setNumber("");
 
-      setNotificationMessage(`Added ${createdPerson.name}`);
-      setIsSuccessfull(true);
-      setTimeout(() => setNotificationMessage(null), 5000);
-    });
+        setNotificationMessage(`Added ${createdPerson.name}`);
+        setIsSuccessfull(true);
+        setTimeout(() => setNotificationMessage(null), 5000);
+      })
+      .catch((err) => {
+        setNotificationMessage(`Error: ${err.response.data.error}`);
+        setIsSuccessfull(false);
+        setTimeout(() => setNotificationMessage(null), 5000);
+      });
   };
 
   const handleDelete = (person) => {
