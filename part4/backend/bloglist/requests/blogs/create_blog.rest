@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkNhcmxvcyIsImlkIjoiNjgzZjdjYTIwNTRjNzA5OWQ0YjhhNGZkIiwiaWF0IjoxNzQ4OTkxMTcxLCJleHAiOjE3NDk1OTU5NzF9.SblLosaTUQRbS3fvPJShpjPCjLCY13ZeSqwod2QB7IQ
+
+{
+    "title": "Random",
+    "author": "Carlos",
+    "url": "http://randomcontent.com",
+    "likes": 1
+}
